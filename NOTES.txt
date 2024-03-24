@@ -1,0 +1,11 @@
+#* LEC 1
+{
+#/ init create-react-app
+- everything configured already
+- Uses Webpack as bundler
+- jest for testing 
+- so forth and so on 
+
+# clean and setup tailwind
+
+}
