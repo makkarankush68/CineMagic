@@ -6,6 +6,108 @@
 - jest for testing 
 - so forth and so on 
 
-# clean and setup tailwind
+#/ clean and setup tailwind
 
+#/ structure of app
+-> index.js -> App.js -> Body
+-> body.js -> Header && (Login OR Browse)
+- configured react-router-dom to make "/" and "/browse"
+
+#  Built header 
+#/ SignIn/SignUp form Page
+- using state variable toggle  
+
+#/ Validating The form 
+-  UseRef hook 
+- to pass refernce of input fileds to validation function
+
+#/ Authorization using firebase as BACK-END
+- goto firebase.google
+- create a new project
+
+- select web app to start
+-> npm i firebase 
+- make firebase.js and paste configs
+
+- if need to deploy to firebase do it specify urls etc
+- deplying steps
+-> npm i -g firebase-tools
+-> firebase login (login same account used to create web app on firebase.google.com)
+-> firebase init
+-> select options
+- in this case hoisting optionally with github deploy
+- we dont want to deply on every push
+-> creates fireabase.config and firebase.rc 
+-> firebase deploy
+- deploys site to default url
+- to push to diff url mention it in firebase.config
+-> also add "rewrites" :{"**":/index.html}
+- to avoid 404 on page switch from url bar
+
+- select auth methods from website
+#/ setting up sign in sign up 
+- find auth code for web using password 
+- from firebase website
+
+#/ for every api/method call of firebase
+# we need auth from getAuth() which comes from ./firebase/auth
+- so call it once in firebase.js only so no need to do it again and again
+-> const auth = getAuth();
+- and export it 
+#/ Now use the inbuild api's of firebase to sign in or signup the user
+-> createUserWithEmailAndPassword(auth , email, password)
+-> signInWithEmailAndPassword(auth , email, password)
+- both retrns userCredentials 
+- if login is succesful
+# Or err message if not
+-> use .then() and .catch to handle these
+
+#/ Setting up Redux
+-> npm i react-redux & @reduxjs/toolkit
+- configure store appStore
+- create slice userSlice
+- name, initalstate , reducers:{action: ()=>{} }
+- export actions and slice.reducer;
+#  provide reducer userReducer to appStore
+# provide store={appStore} to whole app
+
+- now after user Info is with us 
+- we need to update the userSlice and
+- navigate to /browse
+
+# we can use dispatch action after signin/signup/logout
+- every where again again 
+#/ Instead use firebase onAuthStateChanged API
+- this works as an eventListner 
+- as soon as user signin/up/out this will be called
+- so wriiting it in root directry ie Body.js
+- and in useState as it will work always just need to attach once
+#/ Navigating after sign in sign out 
+# useNavigate from router
+- cant be used in body as body itself has router in it
+- and not above it
+- so use naviage in child component
+
+#/ Building /browse page
+- add header and user icon as well as 
+#  signOut btn
+- on signout call firebase api signOut(auth).then().catch();
+- if success navigate to "/"
+
+#/ Update user
+- Now after user Acoount is created we can update userProfile
+- userName , photo etc
+- into firebase 
+- using firebase updateUser api
+- and place those in /browse
+
+#!  but currently 
+- redux store is updating as soon as signUp completes
+- resulting in half info in user Slice and UI
+- and profile data is updated after that
+#/ so to remove this issue 
+- update redux after update profile completes also
+#! its better to use the user from auth ( = getAuth() vala) 
+- to get updated value of userInfo while updating
+-> const user = auth.currentUser;
 }
