@@ -8,9 +8,10 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
+// redux
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { DMMY_DP } from "../utils/constants";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -23,10 +24,9 @@ const Login = () => {
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
-  // and Navigate to respective page
-  const navigate = useNavigate();
   // update user profile after signin
   const dispatch = useDispatch();
+
   const handleSignBtn = () => {
     if (!isSignIn && name.current.value === "") {
       setErrMess("Name not valid");
@@ -38,25 +38,22 @@ const Login = () => {
       return;
     }
     // Signin Signup the user
+    // sign up logic
     if (!isSignIn) {
-      // sign up logic
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
         password.current.value
       )
         .then((userCredential) => {
-          console.log("sign up complete");
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL:
-              "https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/corporate-user-icon.png",
+            photoURL: DMMY_DP,
           })
             .then(() => {
-              console.log("profile updated");
               // dispatch an action again
-              console.log(auth);
+              // to update redux store
               const updatedUser = auth.currentUser;
               dispatch(
                 addUser({
@@ -70,15 +67,15 @@ const Login = () => {
             .catch((error) => {
               setErrMess(error.message);
             });
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrMess(errorCode + " : " + errorMessage);
         });
-    } else {
-      // sign in logic
+    }
+    // sign in logic
+    else {
       signInWithEmailAndPassword(
         auth,
         email.current.value,
@@ -86,8 +83,7 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed in
-          const user = userCredential.user;
-          navigate("/browse");
+          // const user = userCredential.user;
         })
         .catch((error) => {
           // const errorCode = error.code;

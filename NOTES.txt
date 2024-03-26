@@ -111,3 +111,31 @@
 - to get updated value of userInfo while updating
 -> const user = auth.currentUser;
 }
+
+#* LEC 2
+{
+#/ fixing bugs
+- restrict user to access /browse if not logged in
+- did myself by using useNavigate() inside browse page
+#  so if user is null it should take back to "/"
+#/ Make sure to use navigate inside useEffect
+- so that is called after component gets rendered 
+- else errors
+
+#/ Now restricting user to login page if already signed in
+- shifting onAuthChanged api/eventListner
+- of firebase to header component
+- as header is present on every page and inside router provider
+- it is ideal place to write navigation logic and restrictions
+#! now upper logic also not needed ie browse !->! login
+# just naviagate after every auth state change only
+- and if user tries to go to /browse or / 
+- authState will check and take to appropriate page automatically
+#/ as getAuthStateChanged is kind of an eventlistner
+- we also need to remove it if componenet is unMounted
+#/ for this it returns an unsubscribe function already
+- use that in return()=>unsubscribe() in useEffect of header
+- to remove it and stop them from pilling up
+
+
+}
