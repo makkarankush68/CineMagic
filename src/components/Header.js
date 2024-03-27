@@ -5,6 +5,7 @@ import { addUser, removeUser } from "../utils/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LOGO_CDN, NTFLX_USR } from "../utils/constants";
+import { TogggleShowSearch } from "../utils/searchSlice";
 
 const Header = () => {
   // naviagtion logic using firebase api/eventlistner
@@ -34,7 +35,7 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
   // User Info part
-  const [showUserInfo, setShowUserInfo] = useState(true);
+  const [showUserInfo, setShowUserInfo] = useState(false);
   const user = useSelector((store) => store.user);
   const handleSignOut = () => {
     signOut(auth)
@@ -45,28 +46,41 @@ const Header = () => {
         alert(err.message);
       });
   };
+  // toggle search Button
+  const showSearch = useSelector((store) => store.search.showSearch);
   return (
     <div className="relative z-50">
       <div className="absolute bg-gradient-to-b from-black w-full h-36 p-2">
-        <img className="w-40 mx-5" alt="logo" src={LOGO_CDN} />
+        <img className="sm:w-40 sm:mx-5 w-32 my-3" alt="logo" src={LOGO_CDN} />
       </div>
       {user && (
-        <div className="absolute z-10 right-0 my-6 mx-8 cursor-pointer">
+        <div className="absolute z-10 right-0 my-6 mx-8 cursor-pointer flex gap-3">
+          <button
+            onClick={() => dispatch(TogggleShowSearch())}
+            className="p-1 m-1 bg-white font-semibold text-red-600 rounded-sm"
+          >
+            {!showSearch ? "Genie" : "Home"}
+          </button>
           <img
             onClick={() => setShowUserInfo(!showUserInfo)}
             className="h-10"
             alt="signOut"
             src={NTFLX_USR}
           />
-          {showUserInfo && (
-            <div className="absolute p-6 m-1 right-[30%] flex flex-col justify-center text-center bg-black bg-opacity-30 text-white rounded-lg cursor-text ">
+          {!showUserInfo && (
+            <div className="absolute p-6 m-1 xs:right-[30%] right-[0%] top-[100%] flex flex-col justify-center text-center bg-black bg-opacity-50 text-white rounded-lg cursor-text ">
               <ul className="flex flex-col">
-                <img
-                  alt="user-img"
-                  className="bg-white rounded-full h-8 mx-auto"
-                  src={user?.photoURL}
-                />
-                <li>{user?.displayName}</li>
+                <li className="flex items-center">
+                  <img
+                    alt="user-img"
+                    className="bg-white rounded-full h-8 mx-auto"
+                    src={user?.photoURL}
+                  />
+                  <span>
+                    <span>Hi, </span>
+                    <span>{user?.displayName}</span>
+                  </span>
+                </li>
                 <li>{user?.email}</li>
               </ul>
               <button

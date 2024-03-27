@@ -11,7 +11,7 @@ import { auth } from "../utils/firebase";
 // redux
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import { DMMY_DP } from "../utils/constants";
+import { BG_IMG, DMMY_DP } from "../utils/constants";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -100,7 +100,7 @@ const Login = () => {
       <img
         className="w-[100vw] h-[90vh] min-h-[660px]"
         alt="logo"
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/9d3533b2-0e2b-40b2-95e0-ecd7979cc88b/a3873901-5b7c-46eb-b9fa-12fea5197bd3/IN-en-20240311-popsignuptwoweeks-perspective_alpha_website_medium.jpg"
+        src={BG_IMG}
       />
       <div className="text-white absolute top-[25%] mx-[50%] translate-x-[-50%] bg-[#000000d1] p-10 w-[40%] max-w-[400px] min-w-[300px] rounded-lg">
         <form

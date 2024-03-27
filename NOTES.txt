@@ -178,3 +178,36 @@
 #/ getched other categories as well
 - and added to secondary container
 }
+
+#* D3
+{
+#/ Using ChatGPT/Gemini as movie suggestions system
+- Building the search page
+- adding toggle button in header 
+- Using redux Store to store the toggle info 
+- in Search Slice
+
+#/ Planing search Page
+- Search-bar
+- suggestions
+# Built search bar and added css
+
+#? adding multiple lang to search page
+
+#/ Got GEMINI KEY
+- formed a good promt to pass
+- reqested comma separeated movie names
+- converted them to arr of titles
+
+- for each title 
+# fetch movies details from TMDB
+# initially all would return an promise
+- use Promise.all to resolve all and return arr of results 
+- now show all movies which are ok ok popular and have img attached
+# Reuse movieList component
+#* and a lot of CSS
+
+# Added loading to search page
+- and error handling also done
+
+}

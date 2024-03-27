@@ -8,7 +8,7 @@ const VidContainer = ({ id }) => {
   return (
     <div className="w-screen sm:aspect-video sm:h-auto  min-h-[500px]">
       <iframe
-        className="lg:scale-[1.35] md:scale-[1.9] scale-[2.5] min-h-[500px] translate-y-[-10px]"
+        className="md:scale-[1.35] sm:scale-[1.9] xs:scale-[2.5] scale-[3] min-h-[500px] translate-y-[-10px]"
         width="100%"
         height="100%"
         min-height="500px"

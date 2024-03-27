@@ -18,7 +18,7 @@ const Body = () => {
   ]);
  
   return (
-    <div>
+    <div className="max-w-screen overflow-x-clip">
       <RouterProvider router={appRouter} />
     </div>
   );
