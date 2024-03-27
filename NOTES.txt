@@ -1,4 +1,4 @@
-#* LEC 1
+#* D1
 {
 #/ init create-react-app
 - everything configured already
@@ -112,7 +112,7 @@
 -> const user = auth.currentUser;
 }
 
-#* LEC 2
+#* D2
 {
 #/ fixing bugs
 - restrict user to access /browse if not logged in
@@ -137,5 +137,44 @@
 - use that in return()=>unsubscribe() in useEffect of header
 - to remove it and stop them from pilling up
 
+#/ Lets get movies from TMDB API
+- sign in to tmdb goto dev -> api -> key
+# store apiOptions in constants
+- fetch now playing movies from api by providing option along
+-> fetch('url',options)
+- options are header info + API token to send along
 
+#/ movieSlice to store movies data here
+- movieSlice -> addNowPlaying action
+- export both reducer and actions
+- import reducer into appStore and use actions with dispatch
+# dispatch the nowPlayingMovies to store
+
+#/ planning the Browse Page
+{
+    MainContainer
+    - Video Title
+       - VideoBG
+    SecondaryConatiner
+      - MoviesLists * N
+          - MovieCards * N
+}
+#/ Videobackground
+- choose a movie from list of movies
+- from its id 
+- fetch its trailer video key of youtube 
+- using Video api given by TMDB
+- now use that key to embeddd video into backGround
+# Also add video title and desc on top of vid
+#/ added parameters to iframe for better experience 
+- did good css looks amazing
+
+#/ Secondary Container
+- it will have miltiple rows
+#/ MovieList - it will get/map list of movies of each type
+- each row will  have some movies
+#/ MovieCard - it will get/map on each movie of that category
+- make list overflow scroll
+#/ getched other categories as well
+- and added to secondary container
 }
