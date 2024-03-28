@@ -14,14 +14,12 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MzhmYTk0ZDFhZDgwNjZmYjY3NWZjYzZhYjcxMDIzMiIsInN1YiI6IjY2MDJhMGZhNzcwNzAwMDE3YzEwNWEyZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lJ11yIMYhb4Qisrvm9bB1_e3ypclH4JPwqGBXwSGPf8",
+    Authorization: "Bearer " + process.env.REACT_APP_TMDB_KEY,
   },
 };
 
 export const IMG_CDN = "https://image.tmdb.org/t/p/w500/";
 
-export const GEMINI_KEY = "AIzaSyAZUZwrY9IzHN-xdGVfsNfvT0p_JWDRIX8";
+export const GEMINI_KEY = process.env.REACT_APP_GEMINI_KEY;
 
-export const propmtToSend =
-"Please act as a movie recommendation system. Provide a comma-separated single line answer comprising the titles of 10 popular movies according to the querry given by user. The querry is (if there is some popular movie with same name return that also) : ";
+export const propmtToSend = process.env.REACT_APP_PROMPT;

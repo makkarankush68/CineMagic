@@ -11,7 +11,6 @@ const searchSlice = createSlice({
   },
   reducers: {
     TogggleShowSearch: (state) => {
-      console.log("settig ", !state.showSearch);
       state.showSearch = !state.showSearch;
     },
     addResMovies : (state,action)=>{

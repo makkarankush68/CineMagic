@@ -98,7 +98,7 @@ const Login = () => {
     <div className="relative">
       <Header />
       <img
-        className="w-[100vw] h-[90vh] min-h-[660px]"
+        className="w-screen object-cover h-screen"
         alt="logo"
         src={BG_IMG}
       />

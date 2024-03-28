@@ -16,15 +16,15 @@ const MainContainer = () => {
         <VidContainer id={id} />
       </div>
       <div className="w-screen aspect-video absolute top-[0%] text-white bg-gradient-to-tr from-black md:pt-[18%] sm:pt-[25%] xs:pt-[40%] pt-[52%] pl-12 min-h-[500px] max-h-screen ">
-        <h1 className="sm:text-4xl text-lg font-bold w-3/4">{title}</h1>
-        <p className="sm:text-lg text-sm lg:w-1/3 md:w-1/2 w-5/6 " >
+        <h1 className="sm:text-4xl pb-2 text-lg font-semibold">{title}</h1>
+        <p className="sm:text-lg text-sm lg:w-1/3 md:w-1/2 w-5/6 ">
           {overview.split(" ").splice(0, 20).join(" ")}...
         </p>
         <div className="flex w-fit py-2">
-          <button className="p-2 px-6 m-1 bg-white font-bold md:text-xl sm:text-md text-sm rounded-md hover:shadow-md shadow-white text-black">
+          <button className="p-2 px-6 m-1 bg-white font-bold md:text-xl sm:text-md text-sm rounded-md  text-black cursor-pointer z-40 hover:bg-red-700 hover:text-white duration-150">
             Play
           </button>
-          <button className="p-2 px-6 m-1 bg-white bg-opacity-40 font-bold md:text-xl sm:text-md text-sm  rounded-md hover:shadow-lg text-black">
+          <button className="p-2 px-6 m-1 bg-white bg-opacity-40 font-bold md:text-xl sm:text-md text-sm  rounded-md text-black z-40 hover:bg-red-400 hover:bg-opacity-40  hover:text-white duration-150">
             More Info
           </button>
         </div>

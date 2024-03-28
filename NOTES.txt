@@ -210,4 +210,17 @@
 # Added loading to search page
 - and error handling also done
 
+
+#/ securing the keys and imp info
+-> make .env file
+- add all consts which are secret 
+- and add .env to gitignore
+# while deploying make sure to config env of that server also
+- REACT_APP_KEY is naming convention for .env things in react
+
+
+#/ make api calls only if redux store doesn't contain that list
+- added condition in both fetch hooks
+
+#/ v1.0 done ✅
 }

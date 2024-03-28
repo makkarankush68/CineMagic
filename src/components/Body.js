@@ -16,10 +16,21 @@ const Body = () => {
       element: <Browse />,
     },
   ]);
- 
+
   return (
-    <div className="max-w-screen overflow-x-clip">
+    <div className="max-w-screen overflow-x-clip ">
       <RouterProvider router={appRouter} />
+      <footer className="w-screen p-4 text-center bg-black text-white">
+        Made with 💕 by{" "}
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://github.com/makkarankush68"
+          className="underline"
+        >
+          @makkarankush68
+        </a>
+      </footer>
     </div>
   );
 };

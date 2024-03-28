@@ -57,7 +57,7 @@ const Header = () => {
         <div className="absolute z-10 right-0 my-6 mx-8 cursor-pointer flex gap-3">
           <button
             onClick={() => dispatch(TogggleShowSearch())}
-            className="p-1 m-1 bg-white font-semibold text-red-600 rounded-sm"
+            className="p-1 m-1 sm:text-lg bg-white font-semibold text-red-600 rounded-sm  hover:bg-red-700 hover:text-white duration-150"
           >
             {!showSearch ? "Genie" : "Home"}
           </button>
@@ -68,9 +68,9 @@ const Header = () => {
             src={NTFLX_USR}
           />
           {!showUserInfo && (
-            <div className="absolute p-6 m-1 xs:right-[30%] right-[0%] top-[100%] flex flex-col justify-center text-center bg-black bg-opacity-50 text-white rounded-lg cursor-text ">
+            <div className="absolute p-6 m-1 right-[0%] top-[100%] flex flex-col text-center bg-black bg-opacity-50 text-white rounded-lg cursor-auto ">
               <ul className="flex flex-col">
-                <li className="flex items-center">
+                <li className="flex items-center min-w-32">
                   <img
                     alt="user-img"
                     className="bg-white rounded-full h-8 mx-auto"
@@ -81,10 +81,10 @@ const Header = () => {
                     <span>{user?.displayName}</span>
                   </span>
                 </li>
-                <li>{user?.email}</li>
+                <li className="p-1">{user?.email}</li>
               </ul>
               <button
-                className="bg-red-800 text-white w-fit p-1 rounded-md mx-auto mt-2"
+                className="bg-red-700 text-white w-fit p-1 rounded-md mx-auto mt-1"
                 onClick={handleSignOut}
               >
                 SignOut
