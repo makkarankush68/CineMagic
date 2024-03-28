@@ -1,4 +1,4 @@
-# NETFLIX-GPT
+# My-Movie-Genie
 
 ## Overview
 #### Home page
