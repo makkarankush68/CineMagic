@@ -9,8 +9,8 @@ module.exports = {
         "bg-imgnt": `url(${BG_IMG})`,
       },
       screens: {
+        xxs: "270px",
         xs: "475px",
-        xxs:"270px",
         ...defaultTheme.screens,
       },
     },

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidData } from "../utils/validate";
 // firebase for auth/signIn
@@ -92,16 +92,21 @@ const Login = () => {
         });
     }
   };
-
+  useEffect(() => {
+    if (isSignIn) {
+      email.current.value = "test@movi.com";
+      password.current.value = "Test1234!";
+    }
+    else{
+      email.current.value = "";
+      password.current.value = "";
+    }
+  }, [isSignIn]);
   // rendering
   return (
     <div className="relative">
       <Header />
-      <img
-        className="w-screen object-cover h-screen"
-        alt="logo"
-        src={BG_IMG}
-      />
+      <img className="w-screen object-cover h-screen" alt="logo" src={BG_IMG} />
       <div className="text-white absolute top-[25%] mx-[50%] translate-x-[-50%] bg-[#000000d1] p-10 w-[40%] max-w-[400px] min-w-[300px] rounded-lg">
         <form
           className=" flex gap-2 flex-col "
@@ -126,7 +131,7 @@ const Login = () => {
           />
           <input
             ref={password}
-            type="text"
+            type="password"
             placeholder="Password  "
             className="p-2 m-1 my-2 bg-[#3a3a3ac3] outline-none focus:border-red-500 focus:border rounded-md"
           />

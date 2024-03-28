@@ -57,7 +57,7 @@ const Header = () => {
         <div className="absolute z-10 right-0 my-6 mx-8 cursor-pointer flex gap-3">
           <button
             onClick={() => dispatch(TogggleShowSearch())}
-            className="p-1 m-1 sm:text-lg bg-white font-semibold text-red-600 rounded-sm  hover:bg-red-700 hover:text-white duration-150"
+            className="p-1 m-1 sm:text-lg bg-white font-semibold text-[#ff010b] rounded-sm  hover:bg-[#ff010b] hover:text-white duration-150"
           >
             {!showSearch ? "Genie" : "Home"}
           </button>
