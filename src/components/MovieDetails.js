@@ -6,6 +6,7 @@ import VidContainer from "./VidContainer";
 import Loading from "./Loading";
 import ExtraDetails from "./ExtraDetails";
 import MovVids from "./MovVids";
+
 const MovieDetails = () => {
   const [movie, setMovie] = useState("");
   const [vids, setVids] = useState("");
@@ -95,41 +96,6 @@ const MovieDetails = () => {
 
 export default MovieDetails;
 /*
-{
-
-    "homepage": "https://www.godzillaxkongmovie.com",
-    "imdb_id": "tt14539740",
-  }
-  ///
-  {
-  "id": 823464,
-  "results": [
-    {
-      "iso_639_1": "en",
-      "iso_3166_1": "US",
-      "name": "Cast React to London Takeover",
-      "key": "MO-1_Mm8gbI",
-      "site": "YouTube",
-      "size": 1080,
-      "type": "Featurette",
-      "official": true,
-      "published_at": "2024-03-27T09:18:18.000Z",
-      "id": "6605670baafebd01631770aa"
-    },
-    {
-      "iso_639_1": "en",
-      "iso_3166_1": "US",
-      "name": "London Titan Takeover",
-      "key": "PAp2-TXSBwc",
-      "site": "YouTube",
-      "size": 1080,
-      "type": "Featurette",
-      "official": true,
-      "published_at": "2024-03-25T18:25:50.000Z",
-      "id": "6603247b0929f6017e9eef61"
-    },
-  ]
-}
 ///
 {
   "id": 823464,
