@@ -5,7 +5,7 @@ import {
   addPopularMovies,
   addTopRatedMovies,
   addTrendingMovies,
-  addTrendingShows,
+  // addTrendingShows,
   addUpcomingMovies,
 } from "../utils/moviesSlice";
 
@@ -16,14 +16,14 @@ const useFetchAllLists = () => {
   const topRatedMovies = useSelector((store) => store.movies.topRatedMovies);
   const upcomingMovies = useSelector((store) => store.movies.upcomingMovies);
   const trendingMovies = useSelector((store) => store.movies.trendingMovies);
-  const trendingShows = useSelector((store) => store.movies.trendingShows);
+  // const trendingShows = useSelector((store) => store.movies.trendingShows);
 
   useEffect(() => {
     if (!popularMovies) getPopularMovies();
     if (!topRatedMovies) getTopRatedMovies();
     if (!upcomingMovies) getUpcomingMovies();
     if (!trendingMovies) getTrendingMovies();
-    if (!trendingShows) getTrendingShows();
+    // if (!trendingShows) getTrendingShows();
   }, []);
 
   const getPopularMovies = async () => {
@@ -74,18 +74,18 @@ const useFetchAllLists = () => {
       console.log(err.message);
     }
   };
-  const getTrendingShows = async () => {
-    try {
-      const res = await fetch(
-        "https://api.themoviedb.org/3/trending/tv/day?language=en-US",
-        API_OPTIONS
-      );
-      const data = await res.json();
-      dispatch(addTrendingShows(data?.results));
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
+  // const getTrendingShows = async () => {
+  //   try {
+  //     const res = await fetch(
+  //       "https://api.themoviedb.org/3/trending/tv/day?language=en-US",
+  //       API_OPTIONS
+  //     );
+  //     const data = await res.json();
+  //     dispatch(addTrendingShows(data?.results));
+  //   } catch (err) {
+  //     console.log(err.message);
+  //   }
+  // };
 };
 
 export default useFetchAllLists;

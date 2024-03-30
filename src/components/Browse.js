@@ -5,28 +5,23 @@ import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import { useSelector } from "react-redux";
 import useFetchAllLists from "../hooks/useFetchAllLists";
-import SearchComp from "./SearchComp";
+import Loading from "./Loading";
 
 const Browse = () => {
-  const showSearch = useSelector((store) => store.search.showSearch);
   // get movies data
   useNowPlayingMovies();
   useFetchAllLists();
+  const movies = useSelector((store) => store.movies?.trendingMovies);
   const user = useSelector((store) => store.user);
+  if (!movies) return <Loading />;
   return (
     <div className="w-screen overflow-hidden">
       <Header />
       {/* Main content */}
       {user && (
         <div className="flex flex-col w-full bg-black">
-          {showSearch ? (
-            <SearchComp />
-          ) : (
-            <>
-              <MainContainer />
-              <SecondaryContainer />
-            </>
-          )}
+          <MainContainer />
+          <SecondaryContainer />
         </div>
       )}
     </div>

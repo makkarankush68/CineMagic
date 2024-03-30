@@ -4,24 +4,46 @@
 
 /* width */
 ::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
+  width: 7px;
+  height: 7px;
 }
- 
+
 /* Track */
 ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(2px);
-    border-radius: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  border-radius: 5px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #3f3f3f;
-    border-radius: 5px;
+  background: #3f3f3f;
+  border-radius: 5px;
 }
- 
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
+}
+
+.bott-img {
+  animation: 3s ease-in infinite reverse updown;
+}
+@keyframes updown {
+  0% {
+    transform: translate(0px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

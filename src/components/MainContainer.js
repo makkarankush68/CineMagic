@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import VidContainer from "./VidContainer";
+import Loading from "./Loading";
 
 const MainContainer = () => {
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
-  if (!movies) return <></>;
+  if (!movies) return <Loading />;
 
   const MainMovie = movies[Math.floor(Math.random() * 20)];
   const { title, overview, id } = MainMovie;
@@ -22,10 +23,7 @@ const MainContainer = () => {
             {overview.split(" ").splice(0, 19).join(" ")}...
           </p>
           <div className="flex w-fit py-2">
-            <button className="p-2 px-6 m-1 bg-white font-bold md:text-xl sm:text-md text-sm rounded-md  text-black cursor-pointer z-40 hover:bg-red-600 hover:text-white duration-150">
-              Play
-            </button>
-            <button className="p-2 px-6 m-1 bg-white bg-opacity-40 font-bold md:text-xl sm:text-md text-sm  rounded-md text-black z-40 hover:bg-red-400 hover:bg-opacity-40  hover:text-white duration-150">
+            <button className="p-2 px-6 m-1 bg-white bg-opacity-50 font-bold md:text-xl sm:text-md text-sm  rounded-md text-black z-40 hover:bg-red-600 hover:bg-opacity-70  hover:text-white duration-150">
               More Info
             </button>
           </div>

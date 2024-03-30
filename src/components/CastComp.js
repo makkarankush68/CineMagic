@@ -1,0 +1,29 @@
+import React from "react";
+import { IMG_CDN } from "../utils/constants";
+
+const CastComp = ({ cast }) => {
+  if (!cast) return <></>;
+  console.log(cast);
+  cast = cast.filter((c) => c.profile_path);
+  return (
+    <div className="bg-black bg-opacity-50 rounded-md">
+      <div className="flex flex-wrap  md:max-w-[600px] max-w-96  max-h-[280px] overflow-y-scroll justify-around">
+        {cast.map((c) => {
+          return (
+            <div key={c.id} className="relative cursor-pointer text-center">
+              {/* <h1 className="absolute text-wrap max-w-20">{c.name}</h1> */}
+              <img
+                alt="dp"
+                src={IMG_CDN + c.profile_path}
+                className="w-20  m-2 rounded-md"
+              />
+              {/* <h1 className="max-w-24 bottom-0 absolute">{c.character}</h1> */}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default CastComp;
