@@ -1,8 +1,8 @@
 # My-Movie-Genie
 
 ## Overview
-#### Home page
 
+#### Home page
 #### Login page
    - sign up / sign in froms
    - redirect to browse page
@@ -14,6 +14,10 @@
         - title and Desc
    - Movie suggestions
    - movie List 
-#### Netflix-gpt
+#### Genie
    - input by user
    - Movie Suggestions 
+### Mov details
+   - video in Bg + title
+   - more info  and cast
+   - videos available
