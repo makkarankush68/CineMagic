@@ -3,10 +3,9 @@ import { IMG_CDN } from "../utils/constants";
 
 const CastComp = ({ cast }) => {
   if (!cast) return <></>;
-  console.log(cast);
   cast = cast.filter((c) => c.profile_path);
   return (
-    <div className="bg-black bg-opacity-50 rounded-md">
+    <div className="bg-black bg-opacity-50 rounded-md mt-6 py-2">
       <div className="flex flex-wrap  md:max-w-[600px] max-w-96  max-h-[280px] overflow-y-scroll justify-around">
         {cast.map((c) => {
           return (

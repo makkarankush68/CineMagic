@@ -6,9 +6,9 @@ import { addMainTrailerKey } from "../utils/moviesSlice";
 const useTrailerVideo = (id) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    fethcVideo(id);
-  }, []);
-  const fethcVideo = async (id) => {
+    fetchVideo(id);
+  }, [id]);
+  const fetchVideo = async (id) => {
     const res = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
       API_OPTIONS

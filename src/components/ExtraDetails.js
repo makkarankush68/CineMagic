@@ -7,7 +7,7 @@ const movDetails = ({ movie, cast }) => {
       {movie.tagline && (
         <h1 className="font-bold text-2xl">"{movie.tagline}"</h1>
       )}
-      <div className="flex justify-evenly items-center p-3">
+      <div className="flex flex-wrap justify-evenly items-center p-3">
         <div className="flex flex-col">
           <span className="p-1 m-1 px-2 border border-slate-300 bg-black bg-opacity-45 rounded-full flex justify-center gap-4">
             <span className="font-semibold">{movie.status} : </span>
@@ -56,7 +56,7 @@ const movDetails = ({ movie, cast }) => {
             )}
           </span>
         </div>
-        <div>
+        <div >
           <CastComp cast={cast} />
         </div>
       </div>

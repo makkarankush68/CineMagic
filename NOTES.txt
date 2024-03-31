@@ -224,3 +224,15 @@
 
 #/ v1.0 done ✅
 }
+
+#* D4
+{
+#/ made Genie a separate page/route
+# made routing work according to currentl url
+- using useLocation hook
+
+#/ implemented MovDetails page
+- showed relevant info and ytVid associated
+
+# fixed main trailer video 
+}

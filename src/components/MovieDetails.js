@@ -15,7 +15,6 @@ const MovieDetails = () => {
   const id = params.get("id");
 
   useEffect(() => {
-    console.log("useeffect of movdetailss");
     if (!movie) fetchDetails();
     if (!vids) fetchVids();
     if (!cast) fetchCast();
@@ -27,7 +26,6 @@ const MovieDetails = () => {
     );
     const data = await res.json();
     setMovie(data);
-    console.log(data);
   };
   const fetchVids = async () => {
     const res = await fetch(
@@ -36,7 +34,6 @@ const MovieDetails = () => {
     );
     const data = await res.json();
     setVids(data);
-    console.log("vid", data);
   };
   const fetchCast = async () => {
     const res = await fetch(
@@ -45,7 +42,6 @@ const MovieDetails = () => {
     );
     const data = await res.json();
     setcast(data);
-    console.log("cred", data);
   };
   if (!movie) return <Loading />;
 
