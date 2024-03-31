@@ -2,7 +2,7 @@ import React from "react";
 import loadingImg from "../imgs/loading.png";
 const Loading = () => {
   return (
-    <div className="w-full h-full bg-black">
+    <div className="w-full h-full">
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <img
           alt=""

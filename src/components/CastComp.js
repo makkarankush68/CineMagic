@@ -14,7 +14,7 @@ const CastComp = ({ cast }) => {
               <img
                 alt="dp"
                 src={IMG_CDN + c.profile_path}
-                className="w-20  m-2 rounded-md"
+                className="w-20  m-2 rounded-md  hover:scale-105 duration-100"
               />
               {/* <h1 className="max-w-24 bottom-0 absolute">{c.character}</h1> */}
             </div>

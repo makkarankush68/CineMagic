@@ -235,4 +235,6 @@
 - showed relevant info and ytVid associated
 
 # fixed main trailer video 
+
+# Added favicon
 }

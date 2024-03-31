@@ -12,7 +12,7 @@ const MovieCard = ({ movie }) => {
       className="sm:w-48 w-36 p-2 "
     >
       <img
-        className="sm:min-h-[264px] min-h-[192px]"
+        className="sm:min-h-[264px] min-h-[192px] rounded-[3px] hover:scale-105 duration-150 cursor-pointer"
         alt={title}
         src={IMG_CDN + poster_path}
       />

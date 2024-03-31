@@ -38,18 +38,18 @@ const movDetails = ({ movie, cast }) => {
             ))}
           </span>
           <span className="flex flex-wrap justify-around">
-            <a
+            {movie.imdb_id && <a
               target="_blank"
               rel="noreferrer"
               href={`https://www.imdb.com/title/${movie.imdb_id}`}
             >
-              <button className="px-2 p-1 font-semibold text-black bg-amber-400 rounded-md m-1  ">
+              <button className="px-2 p-1 font-semibold text-black bg-amber-400 rounded-md m-1  hover:scale-105 duration-150">
                 IMBD ↗️
               </button>
-            </a>
+            </a>}
             {movie.homepage && (
               <a target="_blank" rel="noreferrer" href={`${movie.homepage}`}>
-                <button className="px-2 p-1 font-semibold text-white bg-gray-700 rounded-md m-1 ">
+                <button className="px-2 p-1 font-semibold text-white bg-gray-700 rounded-md m-1 hover:scale-105 duration-150">
                   Official Page ↗️
                 </button>
               </a>
