@@ -59,7 +59,6 @@ const MovieDetails = () => {
           <div className="-translate-y-36 ">
           <div className="absolute -z-10 w-full h-[150px] bg-gradient-to-t from-black top-0"></div>
             <div className="relative w-screen flex flex-wrap-reverse justify-evenly items-center bg-gradient-to-t from-black ">
-
               <div className="p-3 m-1 w-1/2 max-w-[600px] min-w-[250px] text-center">
                 <h1 className="md:text-4xl pb-2 text-3xl font-semibold ">
                   {movie.title}
