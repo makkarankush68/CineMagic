@@ -8,7 +8,7 @@ const SearchRes = () => {
   if (!movieNames) return ;
 
   return (
-    <div className="bg-black bg-opacity-60 m-2 my-0 p-4 text-white flex flex-wrap rounded-lg" style={{ backdropFilter: 'blur(4px)' }}>
+    <div className="bg-black bg-opacity-60 m-2 my-0 p-4 text-white flex flex-wrap " style={{ backdropFilter: 'blur(4px)' }}>
       {movieNames.map((name, i) =>
         movieResults[i][0] ? (
           <MovieList key={name} title={name} movies={movieResults[i]} />

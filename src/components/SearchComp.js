@@ -90,7 +90,8 @@ const SearchComp = () => {
         <div>
           {resMess && (
             <p
-              className="bg-black bg-opacity-60 pt-4 px-2 text-center text-2xl font-bold text-white"
+              className="bg-black bg-opacity-60 pt-4 px-2 text-center text-2xl font-bold text-white m-2 mb-0 rounded-t-md"
+
               style={{ backdropFilter: "blur(4px)" }}
             >
               {resMess}
