@@ -5,15 +5,15 @@ import MovieList from "./MovieList";
 const SearchRes = () => {
   const data = useSelector((store) => store.search?.searchRes);
   const { movieNames, movieResults } = data;
-  if (!movieNames) return;
+  if (!movieNames) return ;
 
   return (
-    <div className="bg-black bg-opacity-60 p-4 text-white flex flex-wrap ">
+    <div className="bg-black bg-opacity-60 m-2 my-0 p-4 text-white flex flex-wrap " style={{ backdropFilter: 'blur(4px)' }}>
       {movieNames.map((name, i) =>
         movieResults[i][0] ? (
           <MovieList key={name} title={name} movies={movieResults[i]} />
         ) : (
-          <></>
+          <React.Fragment key={i} />
         )
       )}
     </div>

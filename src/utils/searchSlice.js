@@ -4,19 +4,23 @@ const searchSlice = createSlice({
   name: "search",
   initialState: {
     showSearch: false,
-    searchRes : {
+    searchRes: {
       movieNames: null,
-      movieResults : null,
+      movieResults: null,
     },
   },
   reducers: {
     TogggleShowSearch: (state) => {
       state.showSearch = !state.showSearch;
     },
-    addResMovies : (state,action)=>{
+    setShowSearch: (state, action) => {
+      state.showSearch = action.payload;
+    },
+    addResMovies: (state, action) => {
       state.searchRes = action.payload;
-    }
+    },
   },
 });
-export const { TogggleShowSearch, addResMovies } = searchSlice.actions;
+export const { TogggleShowSearch, addResMovies, setShowSearch } =
+  searchSlice.actions;
 export default searchSlice.reducer;

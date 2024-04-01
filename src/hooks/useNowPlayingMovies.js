@@ -19,7 +19,7 @@ const useNowPlayingMovies = () => {
         "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
         API_OPTIONS
       );
-      const data = await res.json().catch((err) => console.log("err"));
+      const data = await res.json();
       dispatch(addNowPlayingMovies(data?.results));
     } catch (err) {
       console.log(err.message);
