@@ -1,10 +1,12 @@
 import React from "react";
 import useTrailerVideo from "../hooks/useTrailerVideo";
 import { useSelector } from "react-redux";
+import Loading from "./Loading";
 
-const VidContainer = ({ id }) => {
-  useTrailerVideo(id);
+const VidContainer = () => {
+  useTrailerVideo();
   const VidKey = useSelector((store) => store.movies?.mainTrailerKey);
+  if (!VidKey) return <Loading/>;
   return (
     <div className="w-screen sm:aspect-video sm:h-auto  min-h-[500px]">
       <iframe

@@ -6,18 +6,24 @@ import VidContainer from "./VidContainer";
 import Loading from "./Loading";
 import ExtraDetails from "./ExtraDetails";
 import MovVids from "./MovVids";
+import { useDispatch } from "react-redux";
+import { addMainTrailerId } from "../utils/moviesSlice";
 
 const MovieDetails = () => {
+  const dispatch = useDispatch();
   const [movie, setMovie] = useState("");
   const [vids, setVids] = useState("");
   const [cast, setcast] = useState("");
   const [params] = useSearchParams();
-  const id = params.get("id");
+  const [id] = useState(params.get("id"));
 
   useEffect(() => {
     if (!movie) fetchDetails();
     if (!vids) fetchVids();
     if (!cast) fetchCast();
+    return () => {
+      dispatch(addMainTrailerId(null));
+    };
   }, []);
   const fetchDetails = async () => {
     const res = await fetch(
@@ -26,6 +32,7 @@ const MovieDetails = () => {
     );
     const data = await res.json();
     setMovie(data);
+    dispatch(addMainTrailerId(data.id));
   };
   const fetchVids = async () => {
     const res = await fetch(
@@ -43,21 +50,20 @@ const MovieDetails = () => {
     const data = await res.json();
     setcast(data);
   };
-  if (!movie) return <Loading />;
+  if (!movie || !cast || !vids) return <Loading />;
 
   return (
     <div>
       <Header />
       <div className="">
         <div className="overflow-hidden">
-          <div className="xs:scale-100 scale-125  max-h-[80vh] overflow-hidden">
-            <VidContainer id={movie.id} />
+          <div className="xs:scale-100 scale-125 min-h-[500px] max-h-[80vh] overflow-hidden">
+            <VidContainer />
           </div>
-          <div className="w-screen max-h-[80vh]  aspect-video absolute top-0 text-white bg-gradient-to-tr from-black  min-h-[500px] overflow-hidden"></div>
+          <div className="w-screen max-h-[80vh]  aspect-video absolute top-0 text-white bg-gradient-to-t from-black  min-h-[500px] overflow-hidden"></div>
         </div>
         <div className=" w-screen text-white bg-black ">
           <div className="-translate-y-36 ">
-          <div className="absolute -z-10 w-full h-[150px] bg-gradient-to-t from-black top-0"></div>
             <div className="relative w-screen flex flex-wrap-reverse justify-evenly items-center bg-gradient-to-t from-black ">
               <div className="p-3 m-1 w-1/2 max-w-[600px] min-w-[250px] text-center">
                 <h1 className="md:text-4xl pb-2 text-3xl font-semibold ">

@@ -1,18 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import useTrailerDetails from "../hooks/useTrailerDetails";
 import { useSelector } from "react-redux";
 
-const MainTitle = ({ id }) => {
+const MainTitle = () => {
   const navigate = useNavigate();
-  useTrailerDetails(id);
   const { mId, title, overview } = useSelector(
     (store) => store.movies.mainTrailerInfo
   );
   if (!overview || !title) return;
   return (
-    <div>
-      {" "}
       <div className="w-screen aspect-video absolute top-0 text-white bg-gradient-to-tr from-black pl-12 min-h-[500px] max-h-screen ">
         <div className="absolute lg:bottom-48 bottom-40">
           <h1 className="sm:text-4xl pb-2 text-lg font-semibold">{title}</h1>
@@ -29,7 +25,6 @@ const MainTitle = ({ id }) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
