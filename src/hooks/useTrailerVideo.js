@@ -1,12 +1,16 @@
 import { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addMainTrailerKey } from "../utils/moviesSlice";
 
-const useTrailerVideo = (id) => {
+const useTrailerVideo = () => {
   const dispatch = useDispatch();
+  const id = useSelector((store) => store.movies.mainTrailerId);
   useEffect(() => {
-    fetchVideo(id);
+    if (id) fetchVideo(id);
+    return () => {
+      dispatch(addMainTrailerKey(null));
+    };
   }, [id]);
   const fetchVideo = async (id) => {
     const res = await fetch(

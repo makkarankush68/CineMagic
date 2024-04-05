@@ -184,7 +184,7 @@ const Login = () => {
         <p className="py-2">
           {isSignIn ? " New to Netflix?" : "Already registered?"}
           <span
-            className="cursor-pointer px-1"
+            className="cursor-pointer px-1 text-red-100 font-semibold"
             onClick={handleToggleSigninForm}
           >
             {isSignIn ? "Sign Up Now" : "Sign In Now"}

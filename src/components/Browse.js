@@ -11,13 +11,12 @@ const Browse = () => {
   // get movies data
   useNowPlayingMovies();
   useFetchAllLists();
-  const movies = useSelector((store) => store.movies?.trendingMovies);
+  const movies = useSelector((store) => store.movies?.nowPlayingMovies);
   const user = useSelector((store) => store.user);
   if (!movies) return <Loading />;
   return (
     <div className="w-screen overflow-hidden">
       <Header />
-      {/* Main content */}
       {user && (
         <div className="flex flex-col w-full bg-black">
           <MainContainer />

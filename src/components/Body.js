@@ -28,7 +28,7 @@ const Body = () => {
   ]);
 
   return (
-    <>
+    <div>
       <div className="min-w-screen min-h-screen overflow-x-clip bg-black ">
         <RouterProvider router={appRouter} />
       </div>
@@ -43,7 +43,7 @@ const Body = () => {
           @makkarankush68
         </a>
       </footer>
-    </>
+    </div>
   );
 };
 

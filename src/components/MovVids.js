@@ -1,9 +1,9 @@
 import React from "react";
 
 const MovVids = ({ vids }) => {
-  if (!vids) return <></>;
-
   vids = vids.filter((v) => v.site === "YouTube" && v.type !== "Teaser");
+  if (!vids[0]) return <></>;
+
   return (
     <div>
       <h1 className="font-semibold w-full text-2xl p-3">More Videos </h1>
@@ -11,7 +11,7 @@ const MovVids = ({ vids }) => {
         {vids &&
           vids.map((v, i) => {
             return (
-              (i < 6) && (
+              i < 6 && (
                 <iframe
                   key={v.key}
                   className="mx-auto rounded-lg ml-3 aspect-video sm:min-h-52 min-h-36"
