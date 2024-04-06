@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "./Header";
-import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import { useSelector } from "react-redux";
@@ -9,7 +8,6 @@ import Loading from "./Loading";
 
 const Browse = () => {
   // get movies data
-  useNowPlayingMovies();
   useFetchAllLists();
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
   const user = useSelector((store) => store.user);

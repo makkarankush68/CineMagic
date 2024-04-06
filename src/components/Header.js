@@ -82,7 +82,7 @@ const Header = () => {
         )}
       </div>
       {user && (
-        <div className="absolute z-10 right-0 my-4 xs:mx-8 mx-3 cursor-pointer flex items-center gap-3">
+        <div className="absolute z-10 right-0 my-4 sm:mx-8 mx-3 cursor-pointer flex items-center gap-3">
           <button
             onClick={() => {
               dispatch(TogggleShowSearch());
@@ -100,24 +100,23 @@ const Header = () => {
             src={NTFLX_USR}
           />
           {showUserInfo && (
-            <div className="absolute p-6 m-1 right-[0%] top-[100%] flex flex-col text-center bg-black bg-opacity-50 text-white rounded-lg cursor-auto ">
+            <div className="absolute p-4 m-1 right-[0%] top-[100%] flex flex-col text-center bg-black bg-opacity-50 text-white rounded-lg cursor-auto lg:text-lg md:text-md text-sm ">
               <ul className="flex flex-col">
-                <li className="flex items-center min-w-32">
+                <li className="flex items-center min-w-28">
                   <img
                     alt="user-img"
-                    className="bg-white rounded-full h-8 mx-auto"
+                    className="bg-white rounded-full sm:h-8 h-7 mx-auto"
                     src={user?.photoURL}
                   />
                   <span>
-                    <span>Hi, </span>
-                    <span>{user?.displayName}</span>
+                    <span>Hi, {user?.displayName}</span>
                   </span>
                 </li>
-                <li className="p-1">{user?.email}</li>
+                <li className="p-1 font-semibold">{user?.email}</li>
               </ul>
               <button
                 onClick={handleSignOut}
-                className="relative items-center justify-center inline-block px-5 py-2 overflow-hidden font-medium text-indigo-600 shadow-2xl group w-fit p-1 rounded-md mx-auto mt-1"
+                className="relative items-center justify-center inline-block px-4 py-1.5 overflow-hidden font-medium text-indigo-600 shadow-2xl group w-fit p-1 rounded-md mx-auto mt-1"
               >
                 <span className="absolute top-0 left-0 w-40 h-40 -mt-10 -ml-3 transition-all duration-700 bg-red-500 rounded-full blur-md ease"></span>
                 <span className="absolute inset-0 w-full h-full transition duration-700 group-hover:rotate-180 ease">
