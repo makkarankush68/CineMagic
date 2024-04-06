@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const moviesSlice = createSlice({
   name: "movies",
@@ -16,6 +16,7 @@ const moviesSlice = createSlice({
       title: null,
       overview: null,
     },
+    muted: true,
   },
   reducers: {
     addNowPlayingMovies: (state, action) => {
@@ -29,6 +30,10 @@ const moviesSlice = createSlice({
     },
     addMainTrailerId: (state, action) => {
       state.mainTrailerId = action.payload;
+    },
+    toggleMuted: (state) => {
+      console.log(current(state));
+      state.muted = !state.muted;
     },
     addPopularMovies: (state, action) => {
       state.popularMovies = action.payload;
@@ -56,7 +61,8 @@ export const {
   addUpcomingMovies,
   addTrendingMovies,
   addMainTrailerInfo,
-  addMainTrailerId
+  addMainTrailerId,
+  toggleMuted,
 } = moviesSlice.actions;
 // addTrendingShows
 export default moviesSlice.reducer;
