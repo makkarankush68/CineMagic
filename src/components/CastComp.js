@@ -9,14 +9,21 @@ const CastComp = ({ cast }) => {
       <div className="flex flex-wrap  md:max-w-[600px] max-w-96  max-h-[280px] overflow-y-scroll justify-around">
         {cast.map((c) => {
           return (
-            <div key={c.id} className="relative cursor-pointer text-center">
-              {/* <h1 className="absolute text-wrap max-w-20">{c.name}</h1> */}
+            <div
+              key={c.id}
+              className="relative cursor-pointer text-center group"
+            >
+              <h1
+                className="absolute w-20 min-w-[5.5vw] m-2 rounded-b-md  group-hover:scale-105 duration-200 text-[13px] text-wrap -z-10 -bottom-[3px] bg-black bg-opacity-40 group-hover:z-10"
+                style={{ backdropFilter: "blur(2px)" }}
+              >
+                {c.name} as {c.character}
+              </h1>
               <img
                 alt="dp"
                 src={IMG_CDN + c.profile_path}
                 className="w-20 min-w-[5.5vw] m-2 rounded-md  hover:scale-105 duration-100"
               />
-              {/* <h1 className="max-w-24 bottom-0 absolute">{c.character}</h1> */}
             </div>
           );
         })}

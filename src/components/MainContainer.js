@@ -12,7 +12,6 @@ const MainContainer = () => {
   useEffect(() => {
     if (movies) {
       const MainMovie = movies[Math.floor(Math.random() * 18)];
-      console.log(MainMovie.id, MainMovie.title);
       dispatch(addMainTrailerId(MainMovie.id));
       dispatch(
         addMainTrailerInfo({
@@ -36,7 +35,7 @@ const MainContainer = () => {
   if (!id) return <Loading />;
   return (
     <div className="relative">
-      <div className=" bg-black overflow-hidden max-h-screen">
+      <div className=" bg-black overflow-hidden min-h-[500px] max-h-screen">
         <VidContainer />
       </div>
       <MainTitle />
