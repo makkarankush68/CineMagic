@@ -69,7 +69,7 @@ const MovieDetails = () => {
                 <h1 className="md:text-4xl pb-2 text-3xl font-semibold ">
                   {movie.title}
                 </h1>
-                <p className="sm:text-lg text-sm max-h-[170px] overflow-scroll ">
+                <p className="sm:text-lg text-sm max-h-[170px] overflow-scroll text-justify">
                   {movie.overview}
                 </p>
               </div>

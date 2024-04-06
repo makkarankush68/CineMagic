@@ -7,6 +7,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { NTFLX_USR } from "../utils/constants";
 import { TogggleShowSearch } from "../utils/searchSlice";
 import cinemagic from "../imgs/cinemagic-bg.png";
+import { toggleMuted } from "../utils/moviesSlice";
+import mute from "../imgs/Mute.png";
+import unmute from "../imgs/Unmute.png";
 
 const Header = () => {
   // naviagtion logic using firebase api/eventlistner
@@ -49,6 +52,8 @@ const Header = () => {
         alert(err.message);
       });
   };
+  const muted = useSelector((store) => store.movies.muted); // State to manage mute/unmute
+
   return (
     <div className="relative z-50">
       <div className="absolute bg-gradient-to-b from-black w-full h-36 p-2">
@@ -56,10 +61,25 @@ const Header = () => {
           onClick={() => {
             navigate("/");
           }}
-          className="sm:w-40 sm:mx-5 w-32 my-3 cursor-pointer"
+          className="sm:w-40 sm:mx-5 w-32 my-3 cursor-pointer mb-0"
           alt="logo"
           src={cinemagic}
         />
+        {(params === "/browse" || params === "/movie") && (
+          <button
+            className="absolute sm:p-2 p-1.5 sm:m-5 m-0 mt-2 bg-white rounded-md bg-opacity-70 hover:bg-opacity-100"
+            onClick={() => {
+              console.log("clikced muteds");
+              dispatch(toggleMuted());
+            }} // Toggle mute state
+          >
+            {muted ? (
+              <img className="md:h-5 h-4" alt="unmute" src={unmute} />
+            ) : (
+              <img className="md:h-5 h-4" alt="mute" src={mute} />
+            )}
+          </button>
+        )}
       </div>
       {user && (
         <div className="absolute z-10 right-0 my-4 xs:mx-8 mx-3 cursor-pointer flex items-center gap-3">
