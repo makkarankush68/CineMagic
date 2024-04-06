@@ -37,7 +37,7 @@ const movDetails = ({ movie, cast }) => {
             {movie.spoken_languages.map((sl) => (
               <span
                 key={sl.name}
-                className="p-1 m-1 px-2 border border-slate-300 bg-black bg-opacity-45 rounded-full"
+                className="p-1 m-1 px-2 border border-slate-300 bg-black bg-opacity-45 rounded-full cursor-default"
               >
                 {sl.name}
               </span>

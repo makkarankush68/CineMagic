@@ -238,3 +238,14 @@
 
 # Added favicon
 }
+
+#* D5
+{
+#/ fixed main trailer not matching 
+
+#/ made improvements to movie page
+
+#/ fixed laoding png 
+
+#/ made Genie page better 
+}

@@ -38,7 +38,7 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
   // User Info part
-  const [showUserInfo, setShowUserInfo] = useState(true);
+  const [showUserInfo, setShowUserInfo] = useState(false);
   const user = useSelector((store) => store.user);
   const handleSignOut = () => {
     signOut(auth)
@@ -74,6 +74,7 @@ const Header = () => {
           </button>
           <img
             onClick={() => setShowUserInfo(!showUserInfo)}
+            onBlur={() => setShowUserInfo(false)}
             className="h-10"
             alt="signOut"
             src={NTFLX_USR}

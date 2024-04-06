@@ -90,6 +90,7 @@ const MovieDetails = () => {
                 <MovVids vids={vids.results} />
               </div>
             </div>
+            <p className="absolute lg:text-8xl md:text-6xl text-4xl w-screen text-center lg:translate-y-[20%] md:translate-y-[40%] translate-y-[90%] opacity-70 text-white font-semibold">Let's Watch it !</p>
           </div>
         </div>
       </div>
