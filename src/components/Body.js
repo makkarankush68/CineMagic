@@ -28,8 +28,8 @@ const Body = () => {
   ]);
 
   return (
-    <div>
-      <div className="min-w-screen min-h-screen overflow-x-clip bg-black ">
+    <div className="max-w-screen overflow-x-hidden bg-black">
+      <div className="max-w-screen min-h-screen">
         <RouterProvider router={appRouter} />
       </div>
       <footer className="w-screen p-4 text-center bg-black text-white">
