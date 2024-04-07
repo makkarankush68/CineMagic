@@ -66,19 +66,27 @@ const Header = () => {
           src={cinemagic}
         />
         {(params === "/browse" || params === "/movie") && (
-          <button
-            className="absolute sm:p-2 p-1.5 sm:m-5 m-0 mt-2 bg-white rounded-md bg-opacity-70 hover:bg-opacity-100"
-            onClick={() => {
-              console.log("clikced muteds");
-              dispatch(toggleMuted());
-            }} // Toggle mute state
-          >
-            {muted ? (
-              <img className="md:h-5 h-4" alt="unmute" src={unmute} />
-            ) : (
-              <img className="md:h-5 h-4" alt="mute" src={mute} />
-            )}
-          </button>
+          <div className="sm:m-5 m-0 mt-2 relative">
+            <div className="group w-fit">
+              <button
+                className="bg-white sm:p-2 p-1.5 rounded-md bg-opacity-70 hover:bg-opacity-100 relative"
+                onClick={() => {
+                  dispatch(toggleMuted());
+                }} // Toggle mute state
+              >
+                {muted ? (
+                  <img className="md:h-5 h-4" alt="unmute" src={unmute} />
+                ) : (
+                  <img className="md:h-5 h-4" alt="mute" src={mute} />
+                )}
+              </button>
+              <span className="absolute bg-black text-white sm:text-sm text-xs rounded-md m-1 mx-2 p-1 tooltip opacity-0 invisible group-hover:opacity-100 group-hover:visible duration-200">
+                {muted
+                  ? "Unmute (may not work in all browsers)"
+                  : "Mute "}
+              </span>
+            </div>
+          </div>
         )}
       </div>
       {user && (
