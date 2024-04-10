@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { geminiModel } from "../utils/initGemini";
-import { API_OPTIONS, propmtToSend } from "../utils/constants";
+import { API_OPTIONS, fetchWithProxy, propmtToSend } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addResMovies } from "../utils/searchSlice";
 import SearchRes from "./SearchRes";
@@ -15,10 +15,18 @@ const SearchComp = () => {
 
   const dispatch = useDispatch();
   const arrToMov = async (mov) => {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${mov}&include_adult=false&language=en-US&page=1`,
-      API_OPTIONS
-    );
+    let res;
+    try {
+      res = await fetch(
+        `https://api.themoviedb.org/3/search/movie?query=${mov}&include_adult=false&language=en-US&page=1`,
+        API_OPTIONS
+      );
+    } catch {
+      res = await fetchWithProxy(
+        `https://api.themoviedb.org/3/search/movie?query=${mov}&include_adult=false&language=en-US&page=1`,
+        API_OPTIONS
+      );
+    }
     const data = await res.json();
     return data.results;
   };
@@ -91,7 +99,6 @@ const SearchComp = () => {
           {resMess && (
             <p
               className="bg-black bg-opacity-60 pt-4 px-2 text-center text-2xl font-bold text-white m-2 mb-0 rounded-t-md"
-
               style={{ backdropFilter: "blur(4px)" }}
             >
               {resMess}
