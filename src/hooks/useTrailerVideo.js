@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { API_OPTIONS } from "../utils/constants";
+import { API_OPTIONS, fetchWithProxy } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addMainTrailerKey } from "../utils/moviesSlice";
 
@@ -13,10 +13,18 @@ const useTrailerVideo = () => {
     };
   }, [id]);
   const fetchVideo = async (id) => {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
-      API_OPTIONS
-    );
+    let res = null;
+    try {
+      res = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
+        API_OPTIONS
+      );
+    } catch(err) {
+      res = await fetchWithProxy(
+        `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
+        API_OPTIONS
+      );
+    }
     const data = await res.json();
     const results = data?.results;
     const filterVids = results.filter(

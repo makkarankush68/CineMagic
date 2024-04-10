@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { API_OPTIONS, IMG_CDN } from "../utils/constants";
+import { API_OPTIONS, IMG_CDN, fetchWithProxy } from "../utils/constants";
 import Header from "./Header";
 import VidContainer from "./VidContainer";
 import Loading from "./Loading";
@@ -25,28 +25,53 @@ const MovieDetails = () => {
       dispatch(addMainTrailerId(null));
     };
   }, []);
+
   const fetchDetails = async () => {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}?language=en-US?video=true`,
-      API_OPTIONS
-    );
+    let res;
+    try {
+      res = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}?language=en-US?video=true`,
+        API_OPTIONS
+      );
+    } catch {
+      res = await fetchWithProxy(
+        `https://api.themoviedb.org/3/movie/${id}?language=en-US?video=true`,
+        API_OPTIONS
+      );
+    }
     const data = await res.json();
     setMovie(data);
     dispatch(addMainTrailerId(data.id));
   };
   const fetchVids = async () => {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/videos`,
-      API_OPTIONS
-    );
+    let res;
+    try {
+      res = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/videos`,
+        API_OPTIONS
+      );
+    } catch {
+      res = await fetchWithProxy(
+        `https://api.themoviedb.org/3/movie/${id}/videos`,
+        API_OPTIONS
+      );
+    }
     const data = await res.json();
     setVids(data);
   };
   const fetchCast = async () => {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/credits`,
-      API_OPTIONS
-    );
+    let res;
+    try {
+      res = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/credits`,
+        API_OPTIONS
+      );
+    } catch {
+      res = await fetchWithProxy(
+        `https://api.themoviedb.org/3/movie/${id}/credits`,
+        API_OPTIONS
+      );
+    }
     const data = await res.json();
     setcast(data);
   };
@@ -90,7 +115,9 @@ const MovieDetails = () => {
                 <MovVids vids={vids.results} />
               </div>
             </div>
-            <p className="absolute lg:text-8xl md:text-6xl text-4xl w-screen text-center lg:translate-y-[20%] md:translate-y-[40%] translate-y-[90%] opacity-70 text-white font-semibold">Let's Watch it !</p>
+            <p className="absolute lg:text-8xl md:text-6xl text-4xl w-screen text-center lg:translate-y-[20%] md:translate-y-[40%] translate-y-[90%] opacity-70 text-white font-semibold">
+              Let's Watch it !
+            </p>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { API_OPTIONS } from "../utils/constants";
+import { API_OPTIONS, fetchWithProxy } from "../utils/constants";
 import { useEffect } from "react";
 import {
   addNowPlayingMovies,
@@ -37,63 +37,86 @@ const useFetchAllLists = () => {
     return array;
   }
   const getNowplayingMovies = async () => {
+    let res = null;
     try {
-      const res = await fetch(
+      // throw new Error("yo");
+      res = await fetch(
         "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
         API_OPTIONS
       );
+    } catch (err) {
+      res = await fetchWithProxy(
+        "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+        API_OPTIONS
+      );
+    }
+    if (res) {
       const data = await res.json();
       dispatch(addNowPlayingMovies(shuffleArray(data?.results)));
-    } catch (err) {
-      console.log(err.message);
     }
   };
   const getPopularMovies = async () => {
+    let res = null;
     try {
-      const res = await fetch(
+      res = await fetch(
+        "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+        API_OPTIONS
+      );
+    } catch (err) {
+      res = await fetchWithProxy(
         "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
         API_OPTIONS
       );
       const data = await res.json();
       dispatch(addPopularMovies(shuffleArray(data?.results)));
-    } catch (err) {
-      console.log(err.message);
     }
   };
   const getTopRatedMovies = async () => {
+    let res = null;
     try {
-      const res = await fetch(
+      res = await fetch(
+        "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
+        API_OPTIONS
+      );
+    } catch (err) {
+      res = await fetchWithProxy(
         "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
         API_OPTIONS
       );
       const data = await res.json();
       dispatch(addTopRatedMovies(shuffleArray(data?.results)));
-    } catch (err) {
-      console.log(err.message);
     }
   };
   const getUpcomingMovies = async () => {
+    let res = null;
     try {
-      const res = await fetch(
+      res = await fetch(
+        "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
+        API_OPTIONS
+      );
+    } catch (err) {
+      res = await fetchWithProxy(
         "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
         API_OPTIONS
       );
       const data = await res.json();
       dispatch(addUpcomingMovies(shuffleArray(data?.results)));
-    } catch (err) {
-      console.log(err.message);
     }
   };
   const getTrendingMovies = async () => {
+    let res = null;
     try {
-      const res = await fetch(
+      res = await fetch(
+        "https://api.themoviedb.org/3/trending/movie/week?language=en-US",
+        API_OPTIONS
+      );
+    } catch (err) {
+      res = await fetchWithProxy(
         "https://api.themoviedb.org/3/trending/movie/week?language=en-US",
         API_OPTIONS
       );
       const data = await res.json();
       dispatch(addTrendingMovies(shuffleArray(data?.results)));
-    } catch (err) {
-      console.log(err.message);
     }
   };
   // const getTrendingShows = async () => {
