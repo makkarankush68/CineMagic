@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { API_OPTIONS, IMG_CDN, fetchWithProxy } from "../utils/constants";
+import {
+  IMG_CDN,
+  fetchFromTmdb,
+} from "../utils/constants";
 import Header from "./Header";
 import VidContainer from "./VidContainer";
 import Loading from "./Loading";
@@ -27,51 +30,24 @@ const MovieDetails = () => {
   }, []);
 
   const fetchDetails = async () => {
-    let res;
-    try {
-      res = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}?language=en-US?video=true`,
-        API_OPTIONS
-      );
-    } catch {
-      res = await fetchWithProxy(
-        `https://api.themoviedb.org/3/movie/${id}?language=en-US?video=true`,
-        API_OPTIONS
-      );
-    }
+    const res = await fetchFromTmdb(
+      `https://api.themoviedb.org/3/movie/${id}?language=en-US?video=true`
+    );
     const data = await res.json();
     setMovie(data);
     dispatch(addMainTrailerId(data.id));
   };
   const fetchVids = async () => {
-    let res;
-    try {
-      res = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}/videos`,
-        API_OPTIONS
-      );
-    } catch {
-      res = await fetchWithProxy(
-        `https://api.themoviedb.org/3/movie/${id}/videos`,
-        API_OPTIONS
-      );
-    }
+    const res = await fetchFromTmdb(
+      `https://api.themoviedb.org/3/movie/${id}/videos`
+    );
     const data = await res.json();
     setVids(data);
   };
   const fetchCast = async () => {
-    let res;
-    try {
-      res = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}/credits`,
-        API_OPTIONS
-      );
-    } catch {
-      res = await fetchWithProxy(
-        `https://api.themoviedb.org/3/movie/${id}/credits`,
-        API_OPTIONS
-      );
-    }
+    const res = await fetchFromTmdb(
+      `https://api.themoviedb.org/3/movie/${id}/credits`
+    );
     const data = await res.json();
     setcast(data);
   };

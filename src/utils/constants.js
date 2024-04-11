@@ -7,7 +7,6 @@ export const NTFLX_USR =
 export const DMMY_DP =
   "https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur-rouge.png";
 
-
 export const API_OPTIONS = {
   method: "GET",
   headers: {
@@ -23,7 +22,6 @@ export const GEMINI_KEY = process.env.REACT_APP_GEMINI_KEY;
 export const propmtToSend = process.env.REACT_APP_PROMPT;
 
 export const fetchWithProxy = (url, params) => {
-  console.log(process.env.REACT_APP_CORS)
   return fetch(`https://proxy.cors.sh/${url}`, {
     ...params,
     headers: {
@@ -31,4 +29,14 @@ export const fetchWithProxy = (url, params) => {
       "x-cors-api-key": process.env.REACT_APP_CORS,
     },
   });
+};
+
+export const fetchFromTmdb = async (url) => {
+  let res = null;
+  try {
+    res = await fetch(url, API_OPTIONS);
+  } catch (err) {
+    res = await fetchWithProxy(url, API_OPTIONS);
+  }
+  if (res) return res;
 };

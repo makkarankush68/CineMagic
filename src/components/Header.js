@@ -81,9 +81,7 @@ const Header = () => {
                 )}
               </button>
               <span className="absolute bg-black text-white sm:text-sm text-xs rounded-md m-1 mx-2 p-1 tooltip opacity-0 invisible group-hover:opacity-100 group-hover:visible duration-200">
-                {muted
-                  ? "Unmute (may not work in all browsers)"
-                  : "Mute "}
+                {muted ? "Unmute (may not work in all browsers)" : "Mute "}
               </span>
             </div>
           </div>
@@ -94,7 +92,7 @@ const Header = () => {
           <button
             onClick={() => {
               dispatch(TogggleShowSearch());
-              params !== "/genie" ? navigate("/genie") : window.history.back();
+              params !== "/genie" ? navigate("/genie") : navigate(-1);
             }}
             className="p-1 m-1 sm:text-lg bg-white font-semibold text-[#ff010b] rounded-sm  hover:bg-[#ff010b] hover:text-white duration-150"
           >
