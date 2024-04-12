@@ -1,11 +1,11 @@
-import React from "react";
+import React, { lazy } from "react";
 import Header from "./Header";
-import MainContainer from "./MainContainer";
-import SecondaryContainer from "./SecondaryContainer";
 import { useSelector } from "react-redux";
 import useFetchAllLists from "../hooks/useFetchAllLists";
 import Loading from "./Loading";
-
+import { Suspense } from "react";
+const MainContainer = lazy(() => import("./MainContainer"));
+const SecondaryContainer = lazy(() => import("./SecondaryContainer"));
 const Browse = () => {
   // get movies data
   useFetchAllLists();
@@ -17,8 +17,10 @@ const Browse = () => {
       <Header />
       {user && (
         <div className="flex flex-col w-full bg-black">
-          <MainContainer />
-          <SecondaryContainer />
+          <Suspense fallback={<Loading />}>
+            <MainContainer />
+            <SecondaryContainer />
+          </Suspense>
         </div>
       )}
     </div>

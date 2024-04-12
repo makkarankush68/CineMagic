@@ -41,8 +41,8 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
   // User Info part
-  const [showUserInfo, setShowUserInfo] = useState(false);
   const user = useSelector((store) => store.user);
+  const [showUserInfo, setShowUserInfo] = useState(false);
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {

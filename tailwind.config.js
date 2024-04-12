@@ -13,6 +13,21 @@ module.exports = {
         xs: "475px",
         ...defaultTheme.screens,
       },
+      animation: {
+        "skew-scroll": "skew-scroll 8s linear alternate-reverse infinite",
+      },
+      keyframes: {
+        "skew-scroll": {
+          "0%": {
+            transform:
+              "rotatex(20deg) rotateZ(-20deg) skewX(20deg) translateZ(0) translateY(40%)",
+          },
+          "100%": {
+            transform:
+              "rotatex(20deg) rotateZ(-20deg) skewX(20deg) translateZ(0) translateY(-140%)",
+          },
+        },
+      },
     },
   },
   plugins: [],

@@ -10,9 +10,11 @@ const MovieList = ({ title, movies }) => {
       {movies && (
         <div className=" overflow-hidden">
           <div className="max-w-screen overflow-x-hidden">
-            <h1 className="sm:text-2xl text-xl font-semibold sm:py-6 p-3 w-50 sm:h-20">
-              {title}
-            </h1>
+            {title && (
+              <h1 className="sm:text-2xl text-xl font-semibold sm:py-6 p-3 w-50 sm:h-20">
+                {title}
+              </h1>
+            )}
             <div className="flex overflow-x-scroll p-2 ">
               <div className="flex ">
                 {movies.map((m) => (

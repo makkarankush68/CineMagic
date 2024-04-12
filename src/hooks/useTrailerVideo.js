@@ -11,7 +11,7 @@ const useTrailerVideo = () => {
     return () => {
       dispatch(addMainTrailerKey(null));
     };
-  }, [id]);
+  }, []);
   const fetchVideo = async (id) => {
     const res = await fetchFromTmdb(
       `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`

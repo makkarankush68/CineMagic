@@ -4,11 +4,10 @@ const MovVids = ({ vids }) => {
   vids = vids.filter(
     (v) =>
       v.site === "YouTube" &&
-      v.type !== "Teaser" &&
       v.type !== "Bloopers" &&
       v.type !== "Featurette"
   );
-  if (!vids[0]) return <></>;
+  if (!vids[0]) return ;
 
   return (
     <div>
@@ -24,6 +23,7 @@ const MovVids = ({ vids }) => {
                     className="rounded-lg ml-3 aspect-video sm:h-52 h-36"
                     src={`https://www.youtube.com/embed/${v.key}?&controls=0&disablekb=1&playlist=${v.key}`}
                     title="YouTube video player"
+                    loading="lazy"
                   ></iframe>
                 )
               );
