@@ -1,29 +1,45 @@
-import React from "react";
-import Login from "./Login";
-import Browse from "./Browse";
+import React, { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
-import MovieDetails from "./MovieDetails";
-import SearchComp from "./SearchComp";
+import Loading from "./Loading";
+const MovieDetails = lazy(() => import("./MovieDetails"));
+const SearchComp = lazy(() => import("./SearchComp"));
+const Login = lazy(() => import("./Login"));
+const Browse = lazy(() => import("./Browse"));
 
 const Body = () => {
-  // router
   const appRouter = createBrowserRouter([
     {
       path: "/",
-      element: <Login />,
+      element: (
+        <Suspense fallback={<Loading/>}>
+          <Login />,
+        </Suspense>
+      ),
     },
     {
       path: "/browse",
-      element: <Browse />,
+      element: (
+        <Suspense fallback={<Loading/>}>
+          <Browse />,
+        </Suspense>
+      ),
     },
     {
       path: "/movie",
-      element: <MovieDetails />,
+      element: (
+        <Suspense fallback={<Loading/>}>
+          <MovieDetails />,
+        </Suspense>
+      ),
     },
     {
       path: "/genie",
-      element: <SearchComp />,
+      element: (
+        <Suspense fallback={<Loading/>}>
+          <SearchComp />,
+        </Suspense>
+      ),
     },
   ]);
 

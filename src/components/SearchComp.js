@@ -1,19 +1,18 @@
 import React, { useRef, useState } from "react";
 import { geminiModel } from "../utils/initGemini";
-import {
-  fetchFromTmdb,
-  propmtToSend,
-} from "../utils/constants";
+import { fetchFromTmdb, propmtToSend } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addResMovies } from "../utils/searchSlice";
 import SearchRes from "./SearchRes";
 import Header from "./Header";
 import Loading from "./Loading";
+import SkewedInfiniteScroll from "./SkewedInfiniteScrll";
 
 const SearchComp = () => {
   const [showLoading, setShowLoading] = useState(false);
   const [errMess, setErrMess] = useState("");
   const [resMess, setResMess] = useState("");
+  const [showSkew, setShowSkew] = useState(false);
   const searchBar = useRef(null);
 
   const dispatch = useDispatch();
@@ -26,7 +25,7 @@ const SearchComp = () => {
   };
   const handleSearchClick = async () => {
     setShowLoading(true);
-    setErrMess("");
+    setErrMess(null);
     try {
       if (!searchBar.current.value) throw new Error("Please type something");
       const prompt = propmtToSend + searchBar.current.value;
@@ -65,6 +64,10 @@ const SearchComp = () => {
             onSubmit={(e) => e.preventDefault()}
           >
             <input
+              onFocus={() => setShowSkew(true)}
+              onBlur={() => setTimeout(() => {
+                setShowSkew(false)
+              }, 100)}
               ref={searchBar}
               className="rgb-border p-2 px-6 m-1 outline-none w-[40vw] min-w-[250px] mx-auto rounded-full text-white bg-gray-800 backdrop-blur-[2px] focus:shadow-lg bg-opacity-80 placeholder:text-slate-300"
               placeholder="What's on your mind?"
@@ -89,17 +92,21 @@ const SearchComp = () => {
             <Loading />
           </h1>
         )}
-        <div>
-          {resMess && (
-            <p
-              className="bg-black bg-opacity-60 pt-4 px-2 text-center text-2xl font-bold text-white m-2 mb-0 rounded-t-md"
-              style={{ backdropFilter: "blur(4px)" }}
-            >
-              {resMess}
-            </p>
-          )}
-          <SearchRes />
-        </div>
+        {(!errMess && !showSkew )? (
+          <div>
+            {resMess && (
+              <p
+                className="bg-black bg-opacity-60 pt-4 px-2 text-center text-2xl font-bold text-white m-2 mb-0 rounded-t-md"
+                style={{ backdropFilter: "blur(4px)" }}
+              >
+                {resMess}
+              </p>
+            )}
+            <SearchRes sClick={handleSearchClick} sBar={searchBar} />
+          </div>
+        ) : (
+          <SkewedInfiniteScroll sClick={handleSearchClick} sBar={searchBar} />
+        )}
       </div>
     </div>
   );

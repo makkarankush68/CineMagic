@@ -14,6 +14,7 @@ const MovieCard = ({ movie }) => {
       <img
         className="sm:min-h-[264px] min-h-[192px] rounded-[3px] hover:scale-105 duration-150 cursor-pointer"
         alt={title}
+        loading="lazy"
         src={IMG_CDN + poster_path}
       />
     </div>

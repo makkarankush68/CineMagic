@@ -32,7 +32,6 @@ const moviesSlice = createSlice({
       state.mainTrailerId = action.payload;
     },
     toggleMuted: (state) => {
-      console.log(current(state));
       state.muted = !state.muted;
     },
     addPopularMovies: (state, action) => {

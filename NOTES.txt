@@ -249,3 +249,26 @@
 
 #/ made Genie page better 
 }
+#* D6
+{
+#/ ces 
+
+#* fix movie list with proxy if error occurs
+
+#/ navigate(-1) instead of navigate.history.back()
+
+#/ and other fixes
+}mute/unmute feature 
+- may not work for all devi
+
+#* D7
+{
+#/ enabled lazy loading in all components
+- as well as images
+
+#/ fixed loading while trailer vid not available
+
+#/ fixed cast component while cast not available
+
+#/ added skewed search items/suggestions
+}
